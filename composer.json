@@ -1,0 +1,32 @@
+{
+    "name": "duuany/eloquent-filters",
+    "description": "A simplest Eloquent query filter package.",
+    "type": "package",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jorge 'jjsquady' Junior",
+            "email": "jorge.techinfo@gmail.com"
+        }
+    ],
+    "require": {
+        "illuminate/support": "5.4.*"
+    },
+    "require-dev": {
+        "fzaninotto/faker": "~1.4",
+        "mockery/mockery": "0.9.*",
+        "orchestra/database": "^3.4",
+        "orchestra/testbench": "^3.4",
+        "phpunit/phpunit": "~5.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "Duuany\\EloquentFilters\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Duuany\\EloquentFilters\\Tests\\": "tests/"
+        }
+    }
+}
