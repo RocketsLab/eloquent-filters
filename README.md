@@ -111,7 +111,7 @@ class UserController extends Controller
 {
     public function index(UserFilter $filters)
     {
-        $users = User::filter($filter)->get();
+        $users = User::filter($filters)->get();
     }
 }
 ```
@@ -125,7 +125,7 @@ $ ./vendor/bin/phpunit
 ```
 
 ## Credits
-* [Jeffery Way](http://laracasts.com)
+* [Jeffrey Way](http://laracasts.com)
 * [Jorge Junior aka jjquady](http://github.com/jjsquady)
 * Many coffee cups :D
 
