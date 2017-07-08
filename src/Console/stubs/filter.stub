@@ -1,0 +1,15 @@
+<?php
+
+namespace $NAMESPACE$;
+
+use Duuany\EloquentFilters\EloquentFilters;
+
+class $FILTER_NAME$ extends EloquentFilters
+{
+    /**
+     * Registered filters to operate upon.
+     *
+     * @var array $filters
+     */
+    protected $filters = [];
+}
