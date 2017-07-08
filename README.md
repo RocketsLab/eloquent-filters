@@ -13,7 +13,7 @@ $ composer require duuany/eloquent-filters
 Add the service provider to your config/app.php
 
 ````php
-Duuany\ELoquentFilters\EloquentFiltersServiceProvider::class
+Duuany\EloquentFilters\EloquentFiltersServiceProvider::class
 ````
 
 Optionally, you can publish config file to override package configuration
