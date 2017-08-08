@@ -122,8 +122,7 @@ class FilterTest extends TestCase
     protected function buildRequest($queryStrings, $requestBody)
     {
         $this->request = Mockery::mock(Request::class)
-                      ->shouldReceive('intersect')
-                      ->with($queryStrings)
+                      ->shouldReceive('all')
                       ->andReturn($requestBody)->getMock();
     }
 }

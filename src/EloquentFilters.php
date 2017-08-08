@@ -70,7 +70,9 @@ abstract class EloquentFilters implements FiltersContract
             throw new EloquentFiltersException;
         }
 
-        return $this->request->intersect($this->filters);
+        return collect($this->request->all())->filter(function ($_, $key) {
+            return collect($this->filters)->contains($key);
+        })->toArray();
     }
 
     /**
