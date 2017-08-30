@@ -19,7 +19,7 @@ Duuany\EloquentFilters\EloquentFiltersServiceProvider::class
 Optionally, you can publish config file to override package configuration
 
 ```bash
-$ php artisan vendor:publish --provider="Duuany\ELoquentFilters\EloquentFiltersServiceProvider" --tag="config"
+$ php artisan vendor:publish --provider="Duuany\EloquentFilters\EloquentFiltersServiceProvider" --tag="config"
 ```
 
 ## Usage
