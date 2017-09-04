@@ -61,7 +61,7 @@ class MakeFilterCommand extends Command
      *
      * @return void
      */
-    public function fire()
+    public function handle()
     {
         $this->path      = $this->app['config']->get('filters.path');
         $this->namespace = $this->app['config']->get('filters.namespace');

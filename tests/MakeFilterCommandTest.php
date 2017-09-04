@@ -18,7 +18,7 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Duuany\EloquentFilters\Tests\Support\AnotherFilters;
 use Duuany\EloquentFilters\Exceptions\EloquentFiltersException;
 
-class FilterTest extends TestCase
+class MakeFilterCommandTest extends TestCase
 {
     use DatabaseMigrations;
 

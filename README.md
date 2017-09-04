@@ -6,8 +6,14 @@
 
 You can install via composer:
 
+### Laravel 5.5+
 ```bash
 $ composer require duuany/eloquent-filters
+```
+
+###Laravel 5.4 or above
+```bash
+$ composer require duuany/eloquent-filters:1.1
 ```
 
 Add the service provider to your config/app.php
