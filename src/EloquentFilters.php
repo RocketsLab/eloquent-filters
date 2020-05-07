@@ -55,7 +55,9 @@ abstract class EloquentFilters implements FiltersContract
             if (method_exists($this, $filter) && count($params) > 1) {
                 call_user_func_array([$this, $filter], $params);
             } else {
-                $this->builder->when($value ?? null, $this->$filter($value));
+                $this->builder->when($value ?? null, function () use ($filter, $value) {
+                    return $this->$filter($value);
+                });
             }
         }
 
