@@ -21,19 +21,20 @@ use Duuany\EloquentFilters\Exceptions\EloquentFiltersException;
 abstract class EloquentFilters implements FiltersContract
 {
     /**
-     * @var Request, Builder
+     * @var \Illuminate\Http\Request $request
+     * @var \Illuminate\Database\Eloquent\Builder $builder
      */
     protected $request, $builder;
 
-    /** @var array  */
+    /** @var array */
     protected $filters = [];
 
-    /** @var string  */
+    /** @var string */
     protected $delimiter = ':';
 
     /**
      * EloquentFilters constructor.
-     * @param Request $request
+     * @param \Illuminate\Http\Request $request
      */
     public function __construct(Request $request)
     {
@@ -42,7 +43,7 @@ abstract class EloquentFilters implements FiltersContract
 
     /**
      * Calls and applies all filters to QueryBuilder.
-     * @param $builder
+     * @param \Illuminate\Database\Eloquent\Builder $builder
      * @return mixed
      */
     public function apply($builder)
@@ -50,9 +51,11 @@ abstract class EloquentFilters implements FiltersContract
         $this->builder = $builder;
 
         foreach ($this->getFilters() as $filter => $value) {
-            if (method_exists($this, $filter)) {
-                $params = preg_split("/[{$this->delimiter}]/", $value);
+            $params = preg_split("/[{$this->delimiter}]/", $value);
+            if (method_exists($this, $filter) && count($params) > 1) {
                 call_user_func_array([$this, $filter], $params);
+            } else {
+                $this->builder->when($value ?? null, $this->$filter($value));
             }
         }
 
@@ -66,7 +69,7 @@ abstract class EloquentFilters implements FiltersContract
      */
     public function getFilters()
     {
-        if(! count($this->filters)) {
+        if (!count($this->filters)) {
             throw new EloquentFiltersException;
         }
 
@@ -86,7 +89,7 @@ abstract class EloquentFilters implements FiltersContract
     {
         try {
             return call_user_func_array([$this->builder, $name], $arguments);
-        }catch (Exception $e) {
+        } catch (Exception $e) {
             throw $e;
         }
     }
